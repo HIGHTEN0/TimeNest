@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Citas - TimeNest</title>
+    <link href="/ProyectoTimeNest/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/ProyectoTimeNest/fontawesome/css/all.min.css" rel="stylesheet">
+    <link href="/ProyectoTimeNest/css/navbar.css" rel="stylesheet">
+    <link href="/ProyectoTimeNest/css/profesionalCitas.css" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column h-100">
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+            <div class="container-fluid navbar-custom">
+
+                <!-- Sección Logo y Profesión -->
+                <div class="left-section">
+                    <div class="logo-picture">
+                        <img id="logoImg" src="/imagenes/usuario.png" alt="logo">
+                    </div>
+                    <span class="profesion" id="profesionText">Cargando...</span>
+                </div>
+
+                <!-- Sección Nombre Consultorio y Enlaces -->
+                <div class="center-section">
+                    <h5 class="titulo" id="nombreConsultorio">Consultorio</h5>
+                    <div class="nav-links">
+                        <a href="/ProyectoTimeNest/html/profesionalClientes.html" class="nav-link-custom">Clientes</a>
+                        <a href="/ProyectoTimeNest/html/profesionalCitas.html" class="nav-link-custom active">Cita</a>
+                    </div>
+                </div>
+
+                <!-- Sección Foto de Perfil y Nombre -->
+                <div class="right-section">
+                    <div class="profile-info">
+                        <div class="profile-picture">
+                            <img id="profileImg" src="/imagenes/usuario.png" alt="Foto de Perfil">
+                        </div>
+                        <span class="nombre-profesional" id="nombreProfesional">Cargando...</span>
+                    </div>
+                </div>
+
+                <!-- Menú -->
+                <label class="event-wrapper">
+                    <input type="checkbox" class="event-wrapper-inp" id="menuCheckbox" />
+                    <div class="bar">
+                        <span class="top bar-list"></span>
+                        <span class="middle bar-list"></span>
+                        <span class="bottom bar-list"></span>
+                    </div>
+                    <section class="menu-container">
+                        <div class="menu-list">Editar Perfil</div>
+                        <div class="menu-list">Generar Listado de Citas</div>
+                        <div class="menu-list">Generar Listado de Clientes</div>
+                        <div class="menu-list cerrar-sesion">Cerrar Sesión</div>
+                    </section>
+                </label>
+
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-shrink-0">
+        <div class="container-fluid mt-5 pt-4">
+            <div class="row g-3">
+
+                <!-- SECCIÓN CREAR CITA -->
+                <div class="col-lg-3">
+                    <div class="card seccion-crear">
+                        <div class="card-header">
+                            <h5><i class="fas fa-plus-circle"></i> Crear Cita:</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="formCrearCita">
+                                <!-- Fecha -->
+                                <div class="mb-3">
+                                    <label class="form-label">Fecha:</label>
+                                    <input type="date" class="form-control" id="fecha" required>
+                                </div>
+
+                                <!-- Hora Inicio -->
+                                <div class="mb-3">
+                                    <label class="form-label">Hora Inicio:</label>
+                                    <input type="time" class="form-control" id="horaInicio" required>
+                                </div>
+
+                                <!-- Hora Fin -->
+                                <div class="mb-3">
+                                    <label class="form-label">Hora Fin:</label>
+                                    <input type="time" class="form-control" id="horaFin" required>
+                                </div>
+
+                                <!-- Profesión-->
+                                <div class="mb-3">
+                                    <label class="form-label">Profesión:</label>
+                                    <input type="text" class="form-control" id="profesion" readonly>
+                                </div>
+
+                                <!-- Cliente -->
+                                <div class="mb-3">
+                                    <label class="form-label">Cliente:</label>
+                                    <select class="form-control" id="clienteSelect" required>
+                                        <option value="">Seleccionar cliente...</option>
+                                    </select>
+                                </div>
+
+                                <!-- Consultorio -->
+                                <div class="mb-3">
+                                    <label class="form-label">Consultorio:</label>
+                                    <select class="form-control" id="consultorio" required>
+                                        <option value="">Seleccionar consultorio...</option>
+                                    </select>
+                                </div>
+
+                                <!-- Ubicación -->
+                                <div class="mb-3">
+                                    <label class="form-label">Ubicación:</label>
+                                    <textarea class="form-control" id="ubicacion" rows="2" readonly
+                                        style="background-color: #f8f9fa;"></textarea>
+                                </div>
+
+                                <!-- Botón Subir -->
+                                <button type="submit" class="btn btn-success w-100">
+                                    <i class="fas fa-upload"></i> Crear Cita
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN CITAS EN CURSO -->
+                <div class="col-lg-5">
+                    <div class="card seccion-curso">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5><i class="fas fa-clock"></i> Citas en curso:</h5>
+                        </div>
+                        <div class="card-body citas-container" id="citasEnCurso">
+                            <p class="text-center text-muted">No hay citas en curso</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN CITAS FINALIZADAS -->
+                <div class="col-lg-4">
+                    <div class="card seccion-finalizadas">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5><i class="fas fa-check-circle"></i> Citas Finalizadas:</h5>
+                        </div>
+                        <div class="card-body citas-container" id="citasFinalizadas">
+                            <p class="text-center text-muted">No hay citas finalizadas</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Editar Cita -->
+    <div class="modal fade" id="modalEditarCita" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Cita</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formEditarCita">
+                        <input type="hidden" id="editCitaId">
+
+                        <div class="mb-3">
+                            <label class="form-label">Fecha:</label>
+                            <input type="date" class="form-control" id="editFecha" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Hora Inicio:</label>
+                            <input type="time" class="form-control" id="editHoraInicio" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Hora Fin:</label>
+                            <input type="time" class="form-control" id="editHoraFin" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Consultorio:</label>
+                            <select class="form-control" id="editConsultorio">
+                                <option value="">Seleccionar...</option>
+                            </select>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarEdicionCita()">Guardar
+                        Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/ProyectoTimeNest/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/ProyectoTimeNest/js/profesional.js"></script>
+    <script src="/ProyectoTimeNest/js/profesionalCitas.js"></script>
+</body>
+
+</html>

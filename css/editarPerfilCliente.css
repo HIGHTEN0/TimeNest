@@ -1,0 +1,314 @@
+
+/*Editar Perfil*/
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+
+.card { /* Tarjeta de perfil */
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
+.card-header { /* Encabezado de la tarjeta */
+    background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
+    color: white;
+    border-radius: 15px 15px 0 0 !important;
+    padding: 20px 25px;
+    border: none;
+}
+
+.card-header h3 { /* Título del encabezado */
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.card-body { /* Cuerpo de la tarjeta */
+    padding: 30px;
+}
+
+.card-title { /* Título dentro del cuerpo */
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1e88e5;
+}
+
+/* Foto de perfil*/
+.profile-picture-container {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    position: relative;
+    overflow: hidden;
+    border: 5px solid #1e88e5;
+    box-shadow: 0 8px 20px rgba(30, 136, 229, 0.3);
+    transition: all 0.3s ease;
+}
+
+.profile-picture-container:hover {/* Efecto al pasar el cursor */
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(30, 136, 229, 0.5);
+}
+
+.profile-picture-container img { /* Imagen de perfil */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-overlay { /* Superposición para subir foto */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.profile-picture-container:hover .upload-overlay { /* Mostrar superposición al pasar el cursor */
+    opacity: 1;
+}
+
+.upload-overlay i { /* Icono de subir foto */
+    display: block;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.upload-overlay span { /* Texto de subir foto */
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/*Tabla de los datos*/
+.table {
+    margin-bottom: 0;
+}
+
+.table tbody tr {/* Efecto al pasar el cursor sobre la fila */
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:hover { /* Cambia el fondo al pasar el cursor */
+    background-color: #f8f9fa;
+    transform: scale(1.01);
+}
+
+.campo-label { /* Etiqueta del campo */
+    width: 30%;
+    color: #555;
+    font-size: 0.95rem;
+    padding: 15px;
+    vertical-align: middle;
+}
+
+.campo-valor { /* Valor del campo */
+    width: 55%;
+    color: #333;
+    font-size: 1rem;
+    padding: 15px;
+    vertical-align: middle;
+}
+
+.campo-acciones { /* Acciones del campo */
+    width: 15%;
+    text-align: center;
+    padding: 15px;
+    vertical-align: middle;
+}
+
+/*Botones*/
+.btn { /* Estilo base para botones */
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+}
+
+.btn i { /* Iconos dentro de los botones */
+    margin-right: 5px;
+}
+
+.btn-primary { /* Botón primario */
+    background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
+    border: none;
+}
+
+.btn-primary:hover { /* Efecto al pasar el cursor */
+    background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(30, 136, 229, 0.4);
+}
+
+.btn-outline-primary { /* Botón primario con borde */
+    color: #1e88e5;
+    border-color: #1e88e5;
+}
+
+.btn-outline-primary:hover { /* Efecto al pasar el cursor */
+    background-color: #1e88e5;
+    border-color: #1e88e5;
+    transform: scale(1.1);
+}
+
+.btn-danger { /* Botón de peligro */
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-danger:hover { /* Efecto al pasar el cursor */
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+.btn-secondary { /* Botón secundario */
+    background-color: #6c757d;
+    border: none;
+}
+
+.btn-secondary:hover { /* Efecto al pasar el cursor */
+    background-color: #5a6268;
+}
+
+.btn-light { /* Botón claro */
+    background-color: white;
+    color: #1e88e5;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-light:hover { /* Efecto al pasar el cursor */
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #1565c0;
+}
+
+/*badges*/
+/*los badges son esos pequeños indicadores de notificaciones o estados*/
+.badge { /* Estilo base para badges */
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    font-weight: 500;
+}
+
+/* Alertas */
+.alert {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/*Modal*/
+/*los modales son ventanas emergentes que aparecen sobre el contenido principal*/
+.modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header { /* Encabezado del modal */
+    background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
+    color: white;
+    border-radius: 15px 15px 0 0;
+    border: none;
+}
+
+.modal-title {
+    font-weight: 600;
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+.form-label { /* Etiquetas de formulario */
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.form-control, .form-select { /* Campos de formulario */
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus { /* Efecto al enfocar */
+    border-color: #1e88e5;
+    box-shadow: 0 0 0 0.2rem rgba(30, 136, 229, 0.25);
+}
+
+/*Responsive Design*/
+/*El responsive design asegura que la interfaz se vea bien en diferentes tamaños de pantalla*/
+
+@media (max-width: 768px) { /* Ajustes para pantallas pequeñas */
+    body {
+        padding: 10px 0;
+    }
+    
+    .card-body {/* Cuerpo de la tarjeta */
+        padding: 20px;
+    }
+    
+    .profile-picture-container {/* Contenedor de la foto de perfil */
+        width: 150px;
+        height: 150px;
+    }
+    
+    .campo-label,
+    .campo-valor,
+    .campo-acciones {
+        display: block;
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .campo-label {
+        background-color: #f8f9fa;
+        font-weight: 600;
+        border-top: 2px solid #dee2e6;
+    }
+    
+    .campo-acciones {
+        text-align: left;
+        border-bottom: 2px solid #dee2e6;
+    }
+    
+    .table-responsive {
+        border: none;
+    }
+}
+
+/*Animaciones*/
+/*son efectos visuales que mejoran la experiencia del usuario*/
+@keyframes fadeIn {/* Animación de desvanecimiento */
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {/* Aplicar animación a la tarjeta */
+    animation: fadeIn 0.5s ease;
+}

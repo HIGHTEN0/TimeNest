@@ -1,0 +1,400 @@
+/* ====================================
+   NAVBAR COMÚN PARA PROFESIONAL
+   ==================================== */
+
+body { /*body es para todo el cuerpo de la pagina*/
+    padding-top: 80px; /* Espacio para navbar fijo */
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar { /*navbar es para la barra de navegacion*/
+    background-color: #107dea; 
+}
+
+.navbar-custom {/*navbar-custom es para personalizar la barra de navegacion*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; 
+}
+
+/* ====================================
+   SECCIÓN IZQUIERDA - LOGO Y PROFESIÓN
+   ==================================== */
+
+/*seccion izquierda*/
+.left-section {/*contenedor de la seccion izquierda*/
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-picture {
+    width: 60px; /* Tamaño del logo */
+    height: 60px;
+    border-radius: 50%;  /* Hace que la imagen sea circular */
+    background-color: rgba(255, 255, 255, 0.914);
+    display: flex;
+    align-items: center;/* Centra verticalmente */
+    justify-content: center;
+    overflow: hidden;/* Oculta cualquier desbordamiento */
+    border: 3px solid rgba(255, 255, 255, 0.926);
+    cursor: pointer;/* Cambia el cursor al pasar sobre la imagen */
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* No permitir que se reduzca */
+}
+
+.logo-picture:hover {/* Efecto hover para el logo */
+  /*el efecto hover es cuando pasas el cursor por encima*/
+    transform: scale(1.05);
+    border-color: white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.logo-picture img {/* Imagen del logo */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profesion { 
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;/* Agrega puntos suspensivos si el texto es demasiado largo */
+    max-width: 180px;
+}
+
+/* ====================================
+   SECCIÓN CENTRAL - TÍTULO Y LINKS
+   ==================================== */
+
+/*seccion central*/
+
+.center-section {/*contenedor de la seccion central*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 0 20px;
+}
+
+.titulo {
+    color: white;
+    margin: 0;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    white-space: nowrap;/* Evita que el texto se divida en varias líneas */
+    overflow: hidden;
+    text-overflow: ellipsis;/* Agrega puntos suspensivos si el texto es demasiado largo */
+    max-width: 100%;
+}
+
+.nav-links {/*contenedor de los enlaces de la barra de navegacion*/
+    display: flex;
+    gap: 30px;
+    margin-top: 8px;
+}
+
+.nav-link-custom {/*estilo para enlaces*/
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 5px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-link-custom:hover {/*efecto hover para los enlaces*/
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #e1ff00;
+    transform: translateY(-2px);
+}
+
+/* ====================================
+   SECCIÓN DERECHA - FOTO DE PERFIL
+   ==================================== */
+
+/*seccion derecha*/
+
+.right-section {/*contenedor de la seccion derecha*/
+    display: flex;
+    align-items: center;
+}
+
+.profile-info {/*contenedor de la informacion del perfil*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.profile-picture {/*estilo de la foto de perfil*/   
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.914);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.926);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.profile-picture:hover {
+    transform: scale(1.05);
+    border-color: white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nombre-profesional {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+
+/*menu*/
+.event-wrapper > .event-wrapper-inp {
+  display: none;
+}
+
+.event-wrapper { /*contenedor del menu*/
+  font-weight: 500;
+  color: rgb(60, 18, 244);
+  background-color: rgb(0, 76, 255);
+  padding: 3px 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  width: fit-content;
+  position: relative;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.arrow {/*flecha del menu*/
+  height: 34%;
+  aspect-ratio: 1;
+  margin-block: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.arrow::after,
+.arrow::before {/*partes de la flecha*/
+  content: "";
+  position: absolute;
+  background-color: rgb(4, 169, 252);
+  height: 100%;
+  width: 2.5px;
+  border-radius: 500px;
+  transform-origin: bottom;
+}
+
+.arrow::after {
+  transform: rotate(35deg) translateX(-0.5px);
+}
+
+.arrow::before {
+  transform: rotate(-35deg) translateX(0.5px);
+}
+
+.event-wrapper > .event-wrapper-inp:checked + .arrow { /*rotacion de la flecha*/
+  transform: rotateX(180deg);
+}
+
+.menu-container {/*contenedor de las opciones del menu*/
+  background-color: rgb(0, 76, 255);
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  position: absolute;
+  width: 150px;
+  left: -100px;
+  top: 130%;
+  overflow: hidden;
+  clip-path: inset(0% 0% 0% 0% round 10px);
+  transition: all 0.4s;
+}
+
+.menu-list {/*opciones del menu*/
+  --delay: 0.4s;
+  --trdelay: 0.15s;
+  padding: 8px 10px;
+  border-radius: inherit;
+  transition: background-color 0.2s 0s;
+  position: relative;
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+.menu-list::after {/*linea divisora de las opciones del menu*/
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 95%;
+}
+
+.menu-list:hover {/*efecto hover de las opciones del menu*/
+  background-color: rgb(16, 199, 240);
+}
+
+.event-wrapper-inp:checked ~ .menu-container {/*animacion de apertura del menu*/
+  clip-path: inset(10% 50% 90% 50% round 10px);
+}
+
+.event-wrapper-inp:not(:checked) ~ .menu-container .menu-list {/*animacion de las opciones del menu*/
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.event-wrapper-inp:not(:checked) ~ .menu-container .menu-list:nth-child(1) { /*animacion de las opciones del menu*/
+  transition:
+    transform 0.4s var(--delay),
+    opacity 0.4s var(--delay);
+}
+
+.event-wrapper-inp:not(:checked) ~ .menu-container .menu-list:nth-child(2) {/*animacion de las opciones del menu*/
+  transition:
+    transform 0.4s calc(var(--delay) + (var(--trdelay) * 1)),
+    opacity 0.4s calc(var(--delay) + (var(--trdelay) * 1));
+}
+
+.event-wrapper-inp:not(:checked) ~ .menu-container .menu-list:nth-child(3) {/*animacion de las opciones del menu*/
+  transition:
+    transform 0.4s calc(var(--delay) + (var(--trdelay) * 2)),
+    opacity 0.4s calc(var(--delay) + (var(--trdelay) * 2));
+}
+
+.event-wrapper-inp:not(:checked) ~ .menu-container .menu-list:nth-child(4) {/*animacion de las opciones del menu*/
+  transition:
+    transform 0.4s calc(var(--delay) + (var(--trdelay) * 3)),
+    opacity 0.4s calc(var(--delay) + (var(--trdelay) * 3));
+}
+
+.bar-event-wrapper-inp {/*ocultar checkbox del menu*/
+  display: none;
+  visibility: hidden;
+}
+
+.bar {/*contenedor de las barras del menu*/
+  display: flex;
+  height: 50%;
+  width: 20px;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bar-list {/*opciones del menu*/
+  --transform: -25%;
+  display: block;
+  width: 100%;
+  height: 3px;
+  border-radius: 50px;
+  background-color: white;
+  transition: all 0.4s;
+  position: relative;
+}
+
+.event-wrapper-inp:not(:checked) ~ .bar > .top {/*animacion de las barras del menu*/
+  transform-origin: top right;
+  transform: translateY(var(--transform)) rotate(-45deg);
+}
+
+.event-wrapper-inp:not(:checked) ~ .bar > .middle {/*animacion de las barras del menu*/
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.event-wrapper-inp:not(:checked) ~ .bar > .bottom {/*animacion de las barras del menu*/
+  transform-origin: bottom right;
+  transform: translateY(calc(var(--transform) * -1)) rotate(45deg);
+}
+/*fin menu*/
+
+/*las media son para hacer la barra de navegacion responsiva*/
+/* responsiva es que se adapte a diferentes tamaños de pantalla */
+@media (max-width: 992px) {/* Pantallas grandes (laptops) */
+    .titulo {
+        font-size: 1.2rem;
+    }
+    
+    .profesion {
+        font-size: 1.1rem;
+        max-width: 140px;
+    }
+    
+    .nav-links {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) { /* Pantallas medianas (tabletas) */
+    .titulo {
+        font-size: 1rem;
+    }
+    
+    .profesion {
+        font-size: 1rem;
+        max-width: 120px;
+    }
+    
+    .nav-links {
+        gap: 15px;
+    }
+    
+    .nav-link-custom {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 576px) { /* Pantallas pequeñas (móviles) */
+    .titulo {
+        font-size: 0.9rem;
+    }
+    
+    .profesion {
+        font-size: 0.9rem;
+        max-width: 100px;
+    }
+    
+    .center-section {
+        padding: 0 10px;
+    }
+    
+    .nav-links {
+        gap: 10px;
+    }
+    
+    .nav-link-custom {
+        font-size: 0.85rem;
+        padding: 5px 10px;
+    }
+}

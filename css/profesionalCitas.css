@@ -1,0 +1,336 @@
+
+/* ============================================
+   ESTILOS PARA GESTIÓN DE CITAS
+   ============================================ */
+
+body {
+    background-color: #f5f5f5;
+}
+
+.container-fluid {
+    max-width: 1400px;
+}
+
+/* ============================================
+   CARDS PRINCIPALES
+   ============================================ */
+
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.card-header {
+    border-radius: 15px 15px 0 0 !important;
+    padding: 15px 20px;
+    border: none;
+}
+
+.card-header h5 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Sección Crear Cita */
+.seccion-crear .card-header {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+}
+
+/* Sección Citas en Curso */
+.seccion-curso .card-header {
+    background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+    color: white;
+}
+
+/* Sección Citas Finalizadas */
+.seccion-finalizadas .card-header {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    color: white;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* ============================================
+   FORMULARIO CREAR CITA
+   ============================================ */
+
+.form-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.form-control:read-only {
+    background-color: #f8f9fa;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 60px;
+}
+
+/* ============================================
+   CONTENEDOR DE CITAS
+   ============================================ */
+
+.citas-container {
+    max-height: 600px;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.citas-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.citas-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.citas-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.citas-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* ============================================
+   TARJETAS DE CITA INDIVIDUAL
+   ============================================ */
+
+.cita-card {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.cita-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cita-info {
+    margin-bottom: 10px;
+}
+
+.cita-info-label {
+    font-weight: 600;
+    color: #555;
+    font-size: 0.85rem;
+}
+
+.cita-info-valor {
+    color: #333;
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+.cita-fecha {
+    background: #e3f2fd;
+    padding: 5px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #1976d2;
+}
+
+.cita-hora {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+}
+
+.hora-badge {
+    background: #fff3cd;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #856404;
+}
+
+.cita-cliente {
+    background: #f8f9fa;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin: 8px 0;
+    border-left: 4px solid #17a2b8;
+}
+
+.cita-ubicacion {
+    background: #e9ecef;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin: 8px 0;
+    font-size: 0.85rem;
+    color: #495057;
+}
+
+/* ============================================
+   BOTONES DE ACCIÓN
+   ============================================ */
+
+.cita-acciones {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-editar {
+    background: #ffc107;
+    color: #000;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-editar:hover {
+    background: #e0a800;
+    transform: scale(1.05);
+}
+
+.btn-finalizar {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-finalizar:hover {
+    background: #218838;
+    transform: scale(1.05);
+}
+
+.btn-cancelar {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-cancelar:hover {
+    background: #c82333;
+    transform: scale(1.05);
+}
+
+.btn-borrar {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-borrar:hover {
+    background: #c82333;
+    transform: scale(1.05);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 992px) {
+    .container-fluid {
+        padding: 10px;
+    }
+
+    .card-header h5 {
+        font-size: 1rem;
+    }
+
+    .citas-container {
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cita-acciones {
+        flex-direction: column;
+    }
+
+    .cita-acciones button {
+        width: 100%;
+    }
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cita-card {
+    animation: fadeIn 0.3s ease;
+}
+
+/* ============================================
+   ESTADOS ESPECIALES
+   ============================================ */
+
+.cita-urgente {
+    border-left: 5px solid #dc3545;
+}
+
+.cita-hoy {
+    border-left: 5px solid #ffc107;
+}

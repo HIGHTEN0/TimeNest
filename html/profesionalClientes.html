@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes - TimeNest</title>
+    <link href="/ProyectoTimeNest/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/ProyectoTimeNest/fontawesome/css/all.min.css" rel="stylesheet">
+    <link href="/ProyectoTimeNest/css/navbar.css" rel="stylesheet">
+    <link href="/ProyectoTimeNest/css/profesionalClientes.css" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column h-100">
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+            <div class="container-fluid navbar-custom">
+
+                <!-- Sección Logo y Profesión -->
+                <div class="left-section">
+                    <div class="logo-picture">
+                        <img id="logoImg" src="/imagenes/usuario.png" alt="logo">
+                    </div>
+                    <span class="profesion" id="profesionText">Cargando...</span>
+                </div>
+
+                <!-- Sección Nombre Consultorio y Enlaces -->
+                <div class="center-section">
+                    <h5 class="titulo" id="nombreConsultorio">Consultorio</h5>
+                    <div class="nav-links">
+                        <a href="/ProyectoTimeNest/html/profesionalClientes.html"
+                            class="nav-link-custom active">Clientes</a>
+                        <a href="/ProyectoTimeNest/html/profesionalCitas.html" class="nav-link-custom">Cita</a>
+                    </div>
+                </div>
+
+                <!-- Sección Foto de Perfil y Nombre -->
+                <div class="right-section">
+                    <div class="profile-info">
+                        <div class="profile-picture">
+                            <img id="profileImg" src="/imagenes/usuario.png" alt="Foto de Perfil">
+                        </div>
+                        <span class="nombre-profesional" id="nombreProfesional">Cargando...</span>
+                    </div>
+                </div>
+
+                <!-- Menú -->
+                <label class="event-wrapper">
+                    <input type="checkbox" class="event-wrapper-inp" id="menuCheckbox" />
+                    <div class="bar">
+                        <span class="top bar-list"></span>
+                        <span class="middle bar-list"></span>
+                        <span class="bottom bar-list"></span>
+                    </div>
+                    <section class="menu-container">
+                        <div class="menu-list">Editar Perfil</div>
+                        <div class="menu-list">Generar Listado de Citas</div>
+                        <div class="menu-list">Generar Listado de Clientes</div>
+                        <div class="menu-list cerrar-sesion">Cerrar Sesión</div>
+                    </section>
+                </label>
+
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-shrink-0">
+        <div class="container-fluid mt-5 pt-4">
+            <div class="row g-3">
+
+                <!-- FORMULARIO: DAR DE ALTA A CLIENTE -->
+                <div class="col-lg-4">
+                    <div class="card card-alta-cliente">
+                        <div class="card-header">
+                            <h5>Dar de alta a Cliente:</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="formAltaCliente">
+
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre:</label>
+                                    <input type="text" class="form-control" id="nombre" placeholder="Ej. Jesus *"
+                                        required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Apellido:</label>
+                                    <input type="text" class="form-control" id="apellido"
+                                        placeholder="Ej. Garcia Soto *">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Género:</label>
+                                    <select class="form-control" id="genero" required>
+                                        <option value="">Seleccionar...</option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Edad:</label>
+                                    <input type="number" class="form-control" id="edad" placeholder="20 (Opcional)"
+                                        min="0" max="120">
+                                </div>
+                                <!-- SELECTOR DE MÉTODO DE CONTACTO -->
+                                <div class="mb-3">
+                                    <label class="form-label">Método de Contacto: *</label>
+                                    <select class="form-control" id="metodoContacto" required>
+                                        <option value="">Seleccionar...</option>
+                                        <option value="telefono">Teléfono</option>
+                                        <option value="correo">Correo</option>
+                                        <option value="ambos">Teléfono y Correo</option>
+                                    </select>
+                                </div>
+
+                                <!-- CAMPO TELÉFONO-->
+                                <div class="mb-3" id="campoTelefono" style="display: none;">
+                                    <label class="form-label">Teléfono (10 digitos): *</label>
+                                    <input type="tel" class="form-control" id="telefono" pattern="[0-9]{10}"
+                                        maxlength="10">
+                                </div>
+
+                                <!-- CAMPO CORREO (oculto inicialmente) -->
+                                <div class="mb-3" id="campoCorreo" style="display: none;">
+                                    <label class="form-label">Correo: *</label>
+                                    <input type="email" class="form-control" id="correo">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Domicilio:</label>
+                                    <textarea class="form-control" id="domicilio" rows="2"
+                                        placeholder="Av./Calle, Número/Ciudad/Estado (Opcional)"></textarea>
+                                </div>
+
+                                <div class="botones-form">
+                                    <button type="submit" class="btn btn-success">Subir</button>
+                                    <button type="button" class="btn btn-danger"
+                                        onclick="cancelarFormulario()">Cancelar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: CLIENTES DADOS DE ALTA -->
+                <div class="col-lg-8">
+                    <div class="card card-clientes-alta">
+                        <div class="card-header">
+                            <h5>Clientes dados de alta:</h5>
+                        </div>
+                        <div class="card-body clientes-container" id="clientesContainer">
+                            <!-- Los clientes se cargarán aquí dinámicamente -->
+                            <p class="text-center text-muted">No hay clientes dados de alta</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Modal Editar Cliente -->
+    <div class="modal fade" id="modalEditarCliente" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Cliente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formEditarCliente">
+                        <input type="hidden" id="editClienteId">
+
+                        <div class="mb-3">
+                            <label class="form-label">Nombre: *</label>
+                            <input type="text" class="form-control" id="editNombre" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Apellido:</label>
+                            <input type="text" class="form-control" id="editApellido">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Género: *</label>
+                            <select class="form-control" id="editGenero" required>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Edad:</label>
+                            <input type="number" class="form-control" id="editEdad" min="0" max="120">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Teléfono:</label>
+                            <input type="tel" class="form-control" id="editTelefono" pattern="[0-9]{10}" maxlength="10">
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Correo:</label>
+                            <input type="email" class="form-control" id="editCorreo">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Domicilio:</label>
+                            <textarea class="form-control" id="editDomicilio" rows="2"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarEdicionCliente()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/ProyectoTimeNest/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/ProyectoTimeNest/js/profesional.js"></script>
+    <script src="/ProyectoTimeNest/js/profesionalClientes.js"></script>
+</body>
+
+</html>

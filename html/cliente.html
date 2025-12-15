@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Citas - TimeNest</title>
+    <link href="/ProyectoTimeNest/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/ProyectoTimeNest/fontawesome/css/all.min.css" rel="stylesheet">
+    <link href="/ProyectoTimeNest/css/navbar.css" rel="stylesheet">
+    <link href="/ProyectoTimeNest/css/cliente.css" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column h-100">
+
+    <!-- Script de verificación de sesión -->
+    <script>
+        fetch('/ProyectoTimeNest/php/verificar_sesion.php')
+            .then(response => response.json())
+            .then(data => {
+                if (!data.logged_in) {
+                    window.location.href = '/ProyectoTimeNest/php/login.php';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+            <div class="container-fluid navbar-custom-cliente">
+
+                <!-- Sección Izquierda: Foto de Perfil y Nombre -->
+                <div class="left-section-cliente">
+                    <div class="profile-picture-cliente">
+                        <img id="profileImg" src="/imagenes/usuario.png" alt="Foto de Perfil">
+                    </div>
+                    <span class="nombre-cliente" id="nombreCliente">Cargando...</span>
+                </div>
+
+                <!-- Sección Centro: Título -->
+                <div class="center-section-cliente">
+                    <h5 class="titulo-cliente">RECUERDA TU CITA DE MANERA FÁCIL Y RÁPIDA</h5>
+                </div>
+
+                <!-- Sección Derecha: Logo TimeNest -->
+                <div class="right-section-cliente">
+                    <div class="logo-circle">
+                        <img src="/imagenes/logoTimeNest.png" alt="TimeNest">
+                    </div>
+                </div>
+
+                <!-- Menú -->
+                <label class="event-wrapper">
+                    <input type="checkbox" class="event-wrapper-inp" id="menuCheckbox" />
+                    <div class="bar">
+                        <span class="top bar-list"></span>
+                        <span class="middle bar-list"></span>
+                        <span class="bottom bar-list"></span>
+                    </div>
+                    <section class="menu-container">
+                        <div class="menu-list" onclick="window.location.href='/ProyectoTimeNest/php/editarPerfilCliente.php'">
+                            Editar Perfil
+                        </div>
+                        <div class="menu-list cerrar-sesion">
+                            Cerrar Sesión
+                        </div>
+                    </section>
+                </label>
+
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-shrink-0">
+        <div class="container-fluid mt-5 pt-4">
+            <div class="row g-3">
+
+                <!-- CITAS PRÓXIMAS -->
+                <div class="col-lg-6">
+                    <div class="card card-citas-proximas">
+                        <div class="card-header card-header-cliente">
+                            <h5>Citas próximas:</h5>
+                        </div>
+                        <div class="card-body citas-container" id="citasProximas">
+                            <p class="text-center text-muted">No hay citas próximas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CITAS FINALIZADAS -->
+                <div class="col-lg-6">
+                    <div class="card card-citas-finalizadas">
+                        <div class="card-header card-header-cliente">
+                            <h5>Citas finalizadas:</h5>
+                        </div>
+                        <div class="card-body citas-container" id="citasFinalizadas">
+                            <p class="text-center text-muted">No hay citas finalizadas</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="/ProyectoTimeNest/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/ProyectoTimeNest/js/cliente.js"></script>
+    
+    <script>
+        // Cerrar sesión
+        document.querySelector('.cerrar-sesion').addEventListener('click', function() {
+            if (confirm('¿Deseas cerrar sesión?')) {
+                fetch('/ProyectoTimeNest/php/cerrarSesion.php')
+                    .then(() => {
+                        window.location.href = '/ProyectoTimeNest/php/login.php';
+                    });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal</title>
+    <link href="/ProyectoTimeNest/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/ProyectoTimeNest/fontawesome/css/all.min.css" rel="stylesheet">
+    <link href="/ProyectoTimeNest/css/navbar.css" rel="stylesheet">
+    <link href="/ProyectoTimeNest/css/profesionalClientes.css" rel="stylesheet">
+    <style>
+        .filtro-card { 
+            background: blue;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .filtro-option {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .filtro-option:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        .filtro-option.active {
+            background: white;
+            color: #0ad51b;
+            border-color: white;
+        }
+       
+    </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+            <div class="container-fluid navbar-custom">
+                <div class="left-section">
+                    <div class="logo-picture">
+                        <img id="logoImg" src="/imagenes/usuario.png" alt="logo">
+                    </div>
+                    <span class="profesion" id="profesionText">Cargando...</span>
+                </div>
+
+                <div class="center-section">
+                    <h5 class="titulo" id="nombreConsultorio">Generar Listados</h5>
+                    <div class="nav-links">
+                        <a href="/ProyectoTimeNest/html/profesionalClientes.html" class="nav-link-custom">Clientes</a>
+                        <a href="/ProyectoTimeNest/html/profesionalCitas.html" class="nav-link-custom">Cita</a>
+                    </div>
+                </div>
+
+                <div class="right-section">
+                    <div class="profile-info">
+                        <div class="profile-picture">
+                            <img id="profileImg" src="/imagenes/usuario.png" alt="Foto de Perfil">
+                        </div>
+                        <span class="nombre-profesional" id="nombreProfesional">Cargando...</span>
+                    </div>
+                </div>
+
+                <label class="event-wrapper">
+                    <input type="checkbox" class="event-wrapper-inp" id="menuCheckbox" />
+                    <div class="bar">
+                        <span class="top bar-list"></span>
+                        <span class="middle bar-list"></span>
+                        <span class="bottom bar-list"></span>
+                    </div>
+                    <section class="menu-container">
+                        <div class="menu-list">Editar Perfil</div>
+                        <div class="menu-list">Generar Listado de Citas</div>
+                        <div class="menu-list">Generar Listado de Clientes</div>
+                        <div class="menu-list cerrar-sesion">Cerrar Sesión</div>
+                    </section>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-shrink-0">
+        <div class="container-fluid mt-5 pt-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    
+                    <div class="filtro-card">
+                        <h3 class="text-center mb-4">
+                            <i class="fas fa-file-pdf"></i> Generar Listado de Clientes dados de alta
+                        </h3>
+                        
+                        <!-- Día a escoger -->
+                        <div class="filtro-option" onclick="seleccionarFiltro('dia')">
+                            <h5><i class="fas fa-calendar-day"></i> Día a escoger</h5>
+                            <div id="input-dia" class="input-filtro" style="display: none;">
+                                <input type="date" class="form-control" id="fecha-especifica">
+                            </div>
+                        </div>
+
+                        <!-- Últimos 7 días -->
+                        <div class="filtro-option" onclick="seleccionarFiltro('ultimos7')">
+                            <h5><i class="fas fa-calendar-week"></i> En los últimos 7 días</h5>
+                        </div>
+
+                        <!-- Mes -->
+                        <div class="filtro-option" onclick="seleccionarFiltro('mes')">
+                            <h5><i class="fas fa-calendar-alt"></i> En el Mes de</h5>
+                            <div id="input-mes" class="input-filtro" style="display: none;">
+                                <select class="form-control" id="mes-seleccionado">
+                                    <option value="">Seleccionar mes...</option>
+                                    <option value="01">Enero</option>
+                                    <option value="02">Febrero</option>
+                                    <option value="03">Marzo</option>
+                                    <option value="04">Abril</option>
+                                    <option value="05">Mayo</option>
+                                    <option value="06">Junio</option>
+                                    <option value="07">Julio</option>
+                                    <option value="08">Agosto</option>
+                                    <option value="09">Septiembre</option>
+                                    <option value="10">Octubre</option>
+                                    <option value="11">Noviembre</option>
+                                    <option value="12">Diciembre</option>
+                                </select>
+                                <select class="form-control mt-2" id="anio-seleccionado">
+                                    <option value="2025">2025</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2023">2023</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Por Género -->
+                        <div class="filtro-option" onclick="seleccionarFiltro('genero')">
+                            <h5><i class="fas fa-venus-mars"></i> Por Género</h5>
+                            <div id="input-genero" class="input-filtro" style="display: none;">
+                                <select class="form-control" id="genero-seleccionado">
+                                    <option value="">Seleccionar...</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Por Edad -->
+                        <div class="filtro-option" onclick="seleccionarFiltro('edad')">
+                            <h5><i class="fas fa-birthday-cake"></i> Por Edad</h5>
+                            <div id="input-edad" class="input-filtro" style="display: none;">
+                                <input type="number" class="form-control" id="edad-especifica" 
+                                       placeholder="Ej. 25" min="0" max="120">
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button class="btn btn-success btn-lg" onclick="generarPDF()">
+                                <i class="fas fa-file-pdf"></i> Generar PDF
+                            </button>
+                            <a href="/ProyectoTimeNest/html/profesionalClientes.html" class="btn btn-secondary btn-lg ms-2">
+                                <i class="fas fa-arrow-left"></i> Volver
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/ProyectoTimeNest/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/ProyectoTimeNest/js/profesional.js"></script>
+    <script src="/ProyectoTimeNest/js/generarListadosClientes.js"></script>
+</body>
+
+</html>

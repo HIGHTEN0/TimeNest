@@ -1,0 +1,446 @@
+body { /*body es para todo el cuerpo de la pagina*/
+    padding-top: 80px; /* Espacio para el navbar fijo */
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #ffffff; /* Fondo blanco */
+    min-height: 100vh;
+}
+/* Ajuste para que el contenido no quede debajo del navbar */
+main.flex-shrink-0 {
+    padding-top: 20px;
+}
+
+.navbar { /*navbar es para la barra de navegacion*/
+    background-color: #107dea; 
+}
+
+/* Navbar personalizada para cliente */
+.navbar-custom-cliente {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+/* Sección izquierda - Foto y nombre del cliente */
+.left-section-cliente {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-picture-cliente {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 3px solid white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.profile-picture-cliente:hover {
+    transform: scale(1.05);
+}
+
+.profile-picture-cliente img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nombre-cliente {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Sección centro - Título */
+.center-section-cliente {
+    flex: 1;
+    text-align: center;
+}
+
+.titulo-cliente {
+    color: white;
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+/* Sección derecha - Logo TimeNest */
+.right-section-cliente {
+    display: flex;
+    align-items: center;
+}
+
+.logo-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.navbar-brand { /*navbar-brand es para el nombre*/
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    white-space: nowrap;  /* Evita que el texto se divida en varias líneas */
+    overflow: hidden;/* Oculta el desbordamiento del texto */
+    max-width: 200px; 
+}
+
+.navbar-nav{/*navbar-nav es para el texto "Profesionales"*/
+    margin-left: 20px; 
+}
+
+.navbar-nav .nav-link:hover { /*Efecto hover para los enlaces de la barra de navegacion*/
+    color: #e1ff00 !important;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+/*menu*/
+.event-wrapper > .event-wrapper-inp {
+  display: none;
+}
+.event-wrapper { /*contenedor del menu*/
+  font-weight: 500;
+  color: rgb(60, 18, 244);
+  background-color: rgb(0, 76, 255);
+  padding: 3px 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  width: fit-content;
+  position: relative;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.arrow {/*flecha del menu*/
+  height: 34%;
+  aspect-ratio: 1;
+  margin-block: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.arrow::after,
+.arrow::before {/*partes de la flecha*/
+  content: "";
+  position: absolute;
+  background-color: rgb(4, 169, 252);
+  height: 100%;
+  width: 2.5px;
+  border-radius: 500px;
+  transform-origin: bottom;
+}
+
+.arrow::after {
+  transform: rotate(35deg) translateX(-0.5px);
+}
+.arrow::before {
+  transform: rotate(-35deg) translateX(0.5px);
+}
+
+.event-wrapper > .event-wrapper-inp:checked + .arrow { /*rotacion de la flecha*/
+  transform: rotateX(180deg);
+}
+
+.menu-container {/*contenedor de las opciones del menu*/
+  background-color: rgb(0, 76, 255);
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  position: absolute;
+  width: 150px;
+  left: -100px;
+  top: 130%;
+  overflow: hidden;
+  clip-path: inset(0% 0% 0% 0% round 10px);
+  transition: all 0.4s;
+}
+
+.menu-list {/*opciones del menu*/
+  --delay: 0.4s;
+  --trdelay: 0.15s;
+  padding: 8px 10px;
+  border-radius: inherit;
+  transition: background-color 0.2s 0s;
+  position: relative;
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+.menu-list::after {/*linea divisoria de las opciones del menu*/
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 95%;
+}
+
+.menu-list:hover {/*efecto hover de las opciones del menu*/
+  background-color: rgb(16, 199, 240);
+}
+
+.event-wrapper-inp:checked ~ .menu-container {/*animacion de apertura del menu*/
+  clip-path: inset(10% 50% 90% 50% round 10px);
+}
+
+.event-wrapper-inp:not(:checked) ~ .menu-container .menu-list {/*animacion de las opciones del menu*/
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.event-wrapper-inp:not(:checked) ~ .menu-container .menu-list:nth-child(1) { /*animacion de las opciones del menu*/
+  transition:
+    transform 0.4s var(--delay),
+    opacity 0.4s var(--delay);
+}
+
+.event-wrapper-inp:not(:checked) ~ .menu-container .menu-list:nth-child(2) {/*animacion de las opciones del menu*/
+  transition:
+    transform 0.4s calc(var(--delay) + (var(--trdelay) * 1)),
+    opacity 0.4s calc(var(--delay) + (var(--trdelay) * 1));
+}
+
+.event-wrapper-inp:not(:checked) ~ .menu-container .menu-list:nth-child(3) {/*animacion de las opciones del menu*/
+  transition:
+    transform 0.4s calc(var(--delay) + (var(--trdelay) * 2)),
+    opacity 0.4s calc(var(--delay) + (var(--trdelay) * 2));
+}
+
+.event-wrapper-inp:not(:checked) ~ .menu-container .menu-list:nth-child(4) {/*animacion de las opciones del menu*/
+  transition:
+    transform 0.4s calc(var(--delay) + (var(--trdelay) * 3)),
+    opacity 0.4s calc(var(--delay) + (var(--trdelay) * 3));
+}
+
+.bar-event-wrapper-inp {/*ocultar checkbox del menu*/
+  display: none;
+  visibility: hidden;
+}
+
+.bar {/*contenedor de las barras del menu*/
+  display: flex;
+  height: 50%;
+  width: 20px;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bar-list {/*opciones del menu*/
+  --transform: -25%;
+  display: block;
+  width: 100%;
+  height: 3px;
+  border-radius: 50px;
+  background-color: white;
+  transition: all 0.4s;
+  position: relative;
+}
+
+.event-wrapper-inp:not(:checked) ~ .bar > .top {/*animacion de las barras del menu*/
+  transform-origin: top right;
+  transform: translateY(var(--transform)) rotate(-45deg);
+}
+
+.event-wrapper-inp:not(:checked) ~ .bar > .middle {
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.event-wrapper-inp:not(:checked) ~ .bar > .bottom {
+  transform-origin: bottom right;
+  transform: translateY(calc(var(--transform) * -1)) rotate(45deg);
+}
+/*fin menu*/
+
+/* Estilos para las tarjetas de las citas del cliente */
+.card {
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+/* Card de citas próximas - Azul claro */
+.card-citas-proximas {
+    background: #e3f2fd;
+}
+
+/* Card de citas finalizadas - Verde claro */
+.card-citas-finalizadas {
+    background: #e8f5e9;
+}
+
+.card-header-cliente {
+    background: white;
+    border-bottom: 2px solid #ddd;
+    padding: 15px;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+.card-header-cliente h5 {
+    margin: 0;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.citas-container {
+    max-height: 600px;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.cita-card-cliente {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.cita-card-cliente:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Fecha sin icono - Azul */
+.cita-fecha-cliente {
+    background: #2196F3;
+    color: white;
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+/* Hora sin icono - Gris */
+.cita-hora-cliente {
+    background: #757575;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.cita-info-cliente {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cita-info-cliente:last-child {
+    border-bottom: none;
+}
+
+.cita-info-cliente-label {
+    font-weight: 600;
+    color: #555;
+}
+
+.cita-info-cliente-valor {
+    color: #333;
+    font-weight: 500;
+}
+
+/* Ubicación sin icono - Amarillo */
+.cita-ubicacion-cliente {
+    background: #FFF9C4;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+    color: #F57F17;
+    font-size: 14px;
+    border-left: 4px solid #FBC02D;
+}
+
+.btn-borrar-cita {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-borrar-cita:hover {
+    background: #c82333;
+}
+
+/* RESPONSIVE - Adaptación a diferentes tamaños de pantalla */
+@media (max-width: 992px) {/* Pantallas grandes (laptops) */
+    .titulo-cliente {
+        font-size: 1rem;
+    }
+    
+    .nombre-cliente {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) { /* Pantallas medianas (tabletas) */
+    .titulo-cliente {
+        font-size: 0.85rem;
+    }
+    
+    .nombre-cliente {
+        font-size: 0.9rem;
+    }
+    
+    .logo-circle {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 576px) { /* Pantallas pequeñas (móviles) */
+    .titulo-cliente {
+        font-size: 0.75rem;
+    }
+    
+    .nombre-cliente {
+        font-size: 0.85rem;
+    }
+    
+    .logo-circle {
+        width: 45px;
+        height: 45px;
+    }
+}
